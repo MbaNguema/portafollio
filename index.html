@@ -9,34 +9,172 @@
     <meta name="keywords" content="Jose Manuel Mba, desarrollo de software, aplicaciones web, PHP, MySQL, sistemas">
     <meta name="author" content="José Manuel Mbá Nguema Medja">
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     
     <style>
+        :root {
+            --primary-blue: #0d6efd;
+            --accent-cyan: #00f2fe;
+            --bg-dark: #0b0f19;
+            --bg-card: #151c2c;
+            --text-light: #e2e8f0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            position: relative;
+        }
+
+        /* Navbar personalizado */
+        .navbar-custom {
+            background-color: rgba(11, 15, 25, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Indicador de pestaña activa en AZUL */
+        .navbar-custom .nav-link {
+            color: #94a3b8 !important;
+            font-weight: 600;
+            padding: 0.5rem 1rem !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+        .navbar-custom .nav-link.active {
+            color: var(--primary-blue) !important;
+            font-weight: 700;
+        }
+
+        .navbar-custom .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 1rem;
+            right: 1rem;
+            height: 3px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(13, 110, 253, 0.8);
+        }
+
+        /* Selector de Idioma */
+        .lang-switch {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 4px 12px;
+        }
+
         .lang-btn {
             cursor: pointer;
             font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
         }
+
         .lang-btn.active {
-            text-decoration: underline;
-            color: #0d6efd !important;
+            color: var(--accent-cyan) !important;
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+        }
+
+        /* Hero Section Gradient */
+        .hero-section {
+            background: linear-gradient(135deg, #0b0f19 0%, #111827 50%, #0d1b2a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(13, 110, 253, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        /* Tarjetas con estilo moderno */
+        .card-custom {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(13, 110, 253, 0.12);
+            border-color: rgba(13, 110, 253, 0.3);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(13, 110, 253, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.75rem;
+        }
+
+        /* Botón de WhatsApp especial */
+        .btn-whatsapp-glow {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white !important;
+            font-weight: 700;
+            border: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp-glow:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Estilo para las etiquetas/badges */
+        .badge-custom {
+            background: #e0f2fe;
+            color: #0369a1;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
         }
     </style>
 </head>
-<body class="bg-light text-dark" data-bs-spy="scroll" data-bs-target="#main-navbar" data-bs-offset="100" tabindex="0">
+<body data-bs-spy="scroll" data-bs-target="#main-navbar" data-bs-smooth-scroll="true" tabindex="0">
 
     <!-- Navbar -->
-    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#"><i class="bi bi-code-slash text-primary"></i> José Manuel Mbá</a>
+            <a class="navbar-brand fw-bold text-white fs-4" href="#"><i class="bi bi-code-slash text-primary"></i> José Manuel <span style="color: var(--primary-blue);">Mbá</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav me-3 align-items-center">
-                    <li class="nav-item"><a class="nav-link active" href="#inicio" data-i18n="nav_home">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#inicio" data-i18n="nav_home">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#servicios" data-i18n="nav_services">Servicios</a></li>
                     <li class="nav-item"><a class="nav-link" href="#proyectos" data-i18n="nav_projects">Proyectos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#sobre-mi" data-i18n="nav_about">Sobre mí</a></li>
@@ -44,13 +182,15 @@
                 </ul>
 
                 <!-- Selector de Idiomas -->
-                <div class="d-flex align-items-center text-white me-lg-3 my-2 my-lg-0">
-                    <span class="lang-btn text-white me-2 active" onclick="changeLanguage('es')" id="btn-es">ES</span> | 
-                    <span class="lang-btn text-white-50 mx-2" onclick="changeLanguage('en')" id="btn-en">EN</span> | 
+                <div class="lang-switch d-flex align-items-center text-white me-lg-3 my-2 my-lg-0">
+                    <span class="lang-btn text-white me-2 active" onclick="changeLanguage('es')" id="btn-es">ES</span>
+                    <span class="text-white-50">|</span>
+                    <span class="lang-btn text-white-50 mx-2" onclick="changeLanguage('en')" id="btn-en">EN</span>
+                    <span class="text-white-50">|</span>
                     <span class="lang-btn text-white-50 ms-2" onclick="changeLanguage('ko')" id="btn-ko">한국어</span>
                 </div>
 
-                <a class="btn btn-success btn-sm ms-lg-2" href="https://wa.me/240555414615?text=Hola,%20vi%20tu%20portafolio%20y%20quiero%20más%20información" target="_blank">
+                <a class="btn btn-whatsapp-glow btn-sm ms-lg-2 px-3 py-2 rounded-pill" href="https://wa.me/240555414615?text=Hola,%20vi%20tu%20portafolio%20y%20quiero%20más%20información" target="_blank">
                     <i class="bi bi-whatsapp"></i> WhatsApp
                 </a>
             </div>
@@ -58,26 +198,26 @@
     </nav>
 
     <!-- Hero Section -->
-    <header id="inicio" class="bg-dark text-white py-5">
-        <div class="container py-4">
+    <header id="inicio" class="hero-section text-white py-5">
+        <div class="container py-5">
             <div class="row align-items-center g-4">
                 <div class="col-lg-8 text-center text-lg-start">
-                    <h1 class="display-5 fw-bold mb-3" data-i18n="hero_title">Desarrollo de Software & Soluciones Tecnológicas</h1>
-                    <p class="lead text-light mb-4" data-i18n="hero_subtitle">Diseño sistemas web a medida, bases de datos optimizadas e infraestructura técnica para digitalizar e impulsar tu negocio.</p>
+                    <h1 class="display-4 fw-bold mb-3 text-white" data-i18n="hero_title">Desarrollo de Software & Soluciones Tecnológicas</h1>
+                    <p class="lead text-light opacity-75 mb-4" data-i18n="hero_subtitle">Diseño sistemas web a medida, bases de datos optimizadas e infraestructura técnica para digitalizar e impulsar tu negocio.</p>
                     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
-                        <a href="https://wa.me/240555414615?text=Hola,%20quiero%20cotizar%20un%20proyecto" class="btn btn-success btn-lg shadow" target="_blank">
+                        <a href="https://wa.me/240555414615?text=Hola,%20quiero%20cotizar%20un%20proyecto" class="btn btn-whatsapp-glow btn-lg px-4 py-3 rounded-3" target="_blank">
                             <i class="bi bi-whatsapp"></i> <span data-i18n="hero_btn_wa">Hablemos por WhatsApp</span>
                         </a>
-                        <a href="#contacto" class="btn btn-outline-light btn-lg" data-i18n="hero_btn_contact">Contactar</a>
+                        <a href="#contacto" class="btn btn-outline-light btn-lg px-4 py-3 rounded-3" data-i18n="hero_btn_contact">Contactar</a>
                     </div>
                 </div>
                 <div class="col-lg-4 text-center">
-                    <div class="p-2 bg-secondary bg-opacity-20 rounded-circle d-inline-block shadow">
+                    <div class="p-2 bg-primary bg-opacity-10 rounded-circle d-inline-block shadow-lg border border-primary border-opacity-25">
                         <!-- Foto de perfil -->
-                        <img src="https://placehold.co/220x220/0d6efd/ffffff?text=JM+Mba" alt="José Manuel Mbá" class="rounded-circle img-fluid border border-3 border-primary" style="width: 200px; height: 200px; object-fit: cover;">
+                        <img src="https://placehold.co/220x220/0d6efd/ffffff?text=JM+Mba" alt="José Manuel Mbá" class="rounded-circle img-fluid border border-3 border-primary" style="width: 210px; height: 210px; object-fit: cover;">
                     </div>
                     <div class="mt-3 text-white small">
-                        <i class="bi bi-geo-alt text-primary"></i> <span data-i18n="hero_location">Guinea Ecuatorial</span>
+                        <i class="bi bi-geo-alt text-primary"></i> <span data-i18n="hero_location">Guinea Ecuatorial - Bata</span>
                     </div>
                 </div>
             </div>
@@ -86,35 +226,35 @@
 
     <!-- Servicios -->
     <section id="servicios" class="py-5">
-        <div class="container">
+        <div class="container py-4">
             <div class="text-center mb-5">
-                <h2 class="fw-bold" data-i18n="serv_title">¿Qué puedo hacer por ti?</h2>
+                <h2 class="fw-bold text-dark" data-i18n="serv_title">¿Qué puedo hacer por ti?</h2>
                 <p class="text-muted" data-i18n="serv_subtitle">Soluciones técnicas profesionales y adaptadas a tus necesidades reales.</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm p-3">
-                        <div class="card-body">
-                            <div class="text-primary fs-1 mb-3"><i class="bi bi-laptop"></i></div>
-                            <h3 class="h5 fw-bold" data-i18n="serv_1_title">Desarrollo Web & Sistemas</h3>
+                    <div class="card card-custom h-100 p-4">
+                        <div class="card-body p-0">
+                            <div class="icon-box mb-4"><i class="bi bi-laptop"></i></div>
+                            <h3 class="h5 fw-bold mb-3" data-i18n="serv_1_title">Desarrollo Web & Sistemas</h3>
                             <p class="text-muted" data-i18n="serv_1_desc">Creación de aplicaciones web personalizadas (gestión de inventarios, laboratorios, puntos de venta o control interno) con PHP, MySQL y Bootstrap.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm p-3">
-                        <div class="card-body">
-                            <div class="text-primary fs-1 mb-3"><i class="bi bi-database"></i></div>
-                            <h3 class="h5 fw-bold" data-i18n="serv_2_title">Bases de Datos & Automatización</h3>
+                    <div class="card card-custom h-100 p-4">
+                        <div class="card-body p-0">
+                            <div class="icon-box mb-4"><i class="bi bi-database"></i></div>
+                            <h3 class="h5 fw-bold mb-3" data-i18n="serv_2_title">Bases de Datos & Automatización</h3>
                             <p class="text-muted" data-i18n="serv_2_desc">Diseño de estructuras de datos seguras, reportes automatizados en PDF y optimización de procesos operativos para eliminar tareas manuales lentas.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm p-3">
-                        <div class="card-body">
-                            <div class="text-primary fs-1 mb-3"><i class="bi bi-tools"></i></div>
-                            <h3 class="h5 fw-bold" data-i18n="serv_3_title">Soporte y Redes</h3>
+                    <div class="card card-custom h-100 p-4">
+                        <div class="card-body p-0">
+                            <div class="icon-box mb-4"><i class="bi bi-tools"></i></div>
+                            <h3 class="h5 fw-bold mb-3" data-i18n="serv_3_title">Soporte y Redes</h3>
                             <p class="text-muted" data-i18n="serv_3_desc">Mantenimiento de equipos, configuración de redes locales y soporte técnico especializado para garantizar la estabilidad de tu infraestructura.</p>
                         </div>
                     </div>
@@ -125,31 +265,31 @@
 
     <!-- Proyectos / Casos de Éxito -->
     <section id="proyectos" class="py-5 bg-white">
-        <div class="container">
+        <div class="container py-4">
             <div class="text-center mb-5">
-                <h2 class="fw-bold" data-i18n="proj_title">Casos de Éxito y Sistemas Desarrollados</h2>
+                <h2 class="fw-bold text-dark" data-i18n="proj_title">Casos de Éxito y Sistemas Desarrollados</h2>
                 <p class="text-muted" data-i18n="proj_subtitle">Ejemplos de soluciones funcionales implementadas para diferentes sectores.</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-6">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body">
-                            <h3 class="h5 fw-bold text-primary" data-i18n="proj_1_title">Sistema de Gestión de Laboratorio Clínico</h3>
-                            <p class="text-muted" data-i18n="proj_1_desc">Plataforma web para el registro de pacientes, gestión de análisis clínicos, firmas digitales y generación automática de resultados en formato PDF.</p>
-                            <span class="badge bg-secondary me-1">PHP</span>
-                            <span class="badge bg-secondary me-1">MySQL</span>
-                            <span class="badge bg-secondary">Bootstrap</span>
+                    <div class="card card-custom h-100 p-4">
+                        <div class="card-body p-0">
+                            <h3 class="h5 fw-bold text-primary mb-3" data-i18n="proj_1_title">Sistema de Gestión de Laboratorio Clínico</h3>
+                            <p class="text-muted mb-4" data-i18n="proj_1_desc">Plataforma web para el registro de pacientes, gestión de análisis clínicos, firmas digitales y generación automática de resultados en formato PDF.</p>
+                            <span class="badge badge-custom me-1">PHP</span>
+                            <span class="badge badge-custom me-1">MySQL</span>
+                            <span class="badge badge-custom">Bootstrap</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body">
-                            <h3 class="h5 fw-bold text-primary" data-i18n="proj_2_title">Plataforma de Control y Gestión Operativa</h3>
-                            <p class="text-muted" data-i18n="proj_2_desc">Sistema integral de control con paneles de administración personalizados para optimizar el flujo de trabajo diario, cuentas e inventario.</p>
-                            <span class="badge bg-secondary me-1">PHP</span>
-                            <span class="badge bg-secondary me-1">MySQL</span>
-                            <span class="badge bg-secondary">JavaScript</span>
+                    <div class="card card-custom h-100 p-4">
+                        <div class="card-body p-0">
+                            <h3 class="h5 fw-bold text-primary mb-3" data-i18n="proj_2_title">Plataforma de Control y Gestión Operativa</h3>
+                            <p class="text-muted mb-4" data-i18n="proj_2_desc">Sistema integral de control con paneles de administración personalizados para optimizar el flujo de trabajo diario, cuentas e inventario.</p>
+                            <span class="badge badge-custom me-1">PHP</span>
+                            <span class="badge badge-custom me-1">MySQL</span>
+                            <span class="badge badge-custom">JavaScript</span>
                         </div>
                     </div>
                 </div>
@@ -159,18 +299,18 @@
 
     <!-- Sobre Mí -->
     <section id="sobre-mi" class="py-5">
-        <div class="container">
+        <div class="container py-4">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="fw-bold mb-3" data-i18n="about_title">Compromiso con la calidad y la eficiencia técnica</h2>
+                    <h2 class="fw-bold mb-3 text-dark" data-i18n="about_title">Compromiso con la calidad y la eficiencia técnica</h2>
                     <p class="text-muted" data-i18n="about_p1">Soy desarrollador de software y técnico en sistemas. Me especializo en transformar problemas complejos de gestión en herramientas digitales rápidas, seguras y fáciles de usar.</p>
                     <p class="text-muted" data-i18n="about_p2">Si tu negocio necesita dejar atrás las hojas de cálculo desordenadas o los procesos manuales, puedo ayudarte a construir una solución robusta desde cero.</p>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <div class="p-4 bg-dark text-white rounded shadow">
-                        <h3 class="h4 mb-3" data-i18n="about_box_title">¿Listo para digitalizar tu proyecto?</h3>
-                        <p class="small text-light mb-4" data-i18n="about_box_desc">Escríbeme directamente por WhatsApp o correo para evaluar tu idea sin compromiso.</p>
-                        <a href="https://wa.me/240555414615?text=Hola,%20quiero%20consultar%20sobre%20un%20proyecto" class="btn btn-success btn-lg" target="_blank">
+                    <div class="p-5 hero-section text-white rounded-4 shadow-lg border border-primary border-opacity-25">
+                        <h3 class="h4 mb-3 text-white" data-i18n="about_box_title">¿Listo para digitalizar tu proyecto?</h3>
+                        <p class="small text-light opacity-75 mb-4" data-i18n="about_box_desc">Escríbeme directamente por WhatsApp o correo para evaluar tu idea sin compromiso.</p>
+                        <a href="https://wa.me/240555414615?text=Hola,%20quiero%20consultar%20sobre%20un%20proyecto" class="btn btn-whatsapp-glow btn-lg px-4 py-3 rounded-3" target="_blank">
                             <i class="bi bi-whatsapp"></i> <span data-i18n="about_box_btn">Iniciar Conversación</span>
                         </a>
                     </div>
@@ -181,27 +321,27 @@
 
     <!-- Sección de Contacto -->
     <section id="contacto" class="py-5 bg-white">
-        <div class="container">
+        <div class="container py-4">
             <div class="text-center mb-5">
-                <h2 class="fw-bold" data-i18n="cont_title">Contacto Directo</h2>
+                <h2 class="fw-bold text-dark" data-i18n="cont_title">Contacto Directo</h2>
                 <p class="text-muted" data-i18n="cont_subtitle">¿Tienes alguna consulta o propuesta? Ponte en contacto conmigo.</p>
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-5">
-                    <div class="d-flex align-items-center p-3 border rounded shadow-sm">
-                        <div class="text-success fs-2 me-3"><i class="bi bi-whatsapp"></i></div>
+                    <div class="d-flex align-items-center p-4 card-custom">
+                        <div class="icon-box me-3"><i class="bi bi-whatsapp text-success"></i></div>
                         <div>
-                            <h4 class="h6 mb-1 fw-bold">WhatsApp</h4>
-                            <a href="https://wa.me/240555414615" class="text-decoration-none text-dark fw-semibold" target="_blank">+240 555 414 615</a>
+                            <h4 class="h6 mb-1 fw-bold text-muted">WhatsApp</h4>
+                            <a href="https://wa.me/240555414615" class="text-decoration-none text-dark fw-bold fs-5" target="_blank">+240 555 414 615</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="d-flex align-items-center p-3 border rounded shadow-sm">
-                        <div class="text-primary fs-2 me-3"><i class="bi bi-envelope"></i></div>
+                    <div class="d-flex align-items-center p-4 card-custom">
+                        <div class="icon-box me-3"><i class="bi bi-envelope text-primary"></i></div>
                         <div>
-                            <h4 class="h6 mb-1 fw-bold" data-i18n="cont_email_title">Correo Electrónico</h4>
-                            <a href="mailto:josemanuelmbanguemamedja@gmail.com" class="text-decoration-none text-dark fw-semibold">josemanuelmbanguemamedja@gmail.com</a>
+                            <h4 class="h6 mb-1 fw-bold text-muted" data-i18n="cont_email_title">Correo Electrónico</h4>
+                            <a href="mailto:josemanuelmbanguemamedja@gmail.com" class="text-decoration-none text-dark fw-bold fs-6">josemanuelmbanguemamedja@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -210,9 +350,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4">
+    <footer class="hero-section text-white text-center py-4 border-top border-secondary border-opacity-25">
         <div class="container">
-            <p class="mb-0">&copy; 2026 José Manuel Mbá. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
+            <p class="mb-0 text-light opacity-75">&copy; 2026 José Manuel Mbá. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
         </div>
     </footer>
 
@@ -309,7 +449,7 @@
                 hero_btn_contact: "연락하기",
                 hero_location: "적도 기니",
                 serv_title: "제공하는 서비스",
-                serv_title_sub: "고객의 요구에 맞춘 전문적인 IT 기술 솔루션.",
+                serv_subtitle: "고객의 요구에 맞춘 전문적인 IT 기술 솔루션.",
                 serv_1_title: "웹 및 시스템 개발",
                 serv_1_desc: "PHP, MySQL, Bootstrap 기반의 맞춤형 웹 애플리케이션 개발 (재고 관리, 임상 검사, POS 및 사내 관리 시스템).",
                 serv_2_title: "데이터베이스 및 자동화",
@@ -344,7 +484,7 @@
                 }
             });
 
-            // Actualizar estilo activo de botones
+            // Actualizar estilo activo de botones de idioma
             document.querySelectorAll(".lang-btn").forEach(btn => {
                 btn.classList.remove("active", "text-white");
                 btn.classList.add("text-white-50");
@@ -352,7 +492,7 @@
 
             const activeBtn = document.getElementById(`btn-${lang}`);
             if (activeBtn) {
-                activeBtn.classList.add("active", "text-white");
+                activeBtn.classList.add("active");
                 activeBtn.classList.remove("text-white-50");
             }
 
